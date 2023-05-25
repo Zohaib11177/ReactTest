@@ -1,7 +1,7 @@
 # Task
 
 All this task must be done in 1 day
-sdfdsfdsfdsffds
+
 - in src/utils/MkdSDK.jsx implement Line 17
 - in src/utils/MkdSDK.jsx implement Line 91
 - in src/pages/AdminLoginPage.jsx implement Line 30
