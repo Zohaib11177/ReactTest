@@ -26,6 +26,7 @@ const reducer = (state, action) => {
       
     case "LOGOUT":
       localStorage.clear();
+      window.location.href = window.location.host + "/admin/login" 
       return {
         ...state,
         isAuthenticated: false,
@@ -56,9 +57,7 @@ const AuthProvider = ({ children }) => {
     if(localStorage.getItem('token')){
       sdk.check(localStorage.getItem('role'))
       .then((response) => {
-        // console.log(response?.data?.message,"ooooooooo")
         if(response?.data?.message == "OK"){
-          // console.log('Login successful:', response.data);
           dispatch({ type: 'LOGIN', payload: {
         token : localStorage.getItem('token'),
         role : localStorage.getItem('role')
@@ -66,15 +65,11 @@ const AuthProvider = ({ children }) => {
         }
       })
       .catch((error) => {
-      // navigate("/admin/login")
 
       dispatch({ type: 'LOGOUT', payload:"none" });
-      // console.error('Login error:', error);
-      // Handle the login error here
     });
   }
     //TODO
-    // 48
   }, []);
 
   return (

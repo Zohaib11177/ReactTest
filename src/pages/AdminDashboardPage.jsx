@@ -4,7 +4,6 @@ import { AuthContext } from "../authContext";
 
 const AdminDashboardPage = () => {
   const { dispatch } = React.useContext(AuthContext);
-
   const [video, setVideo] = useState([])
   const [page, setPage] = useState(1)
   const [total, settotal] = useState([])
@@ -26,14 +25,14 @@ const AdminDashboardPage = () => {
     sdk.callRestAPI(payload, "PAGINATE")
       .then((response) => {
         if (response) {
-          console.log(response, "kkkkkk")
+          
           if (response?.list) {
             setVideo(response?.list)
             let array = []
             for (let i = 1; i <= response?.num_pages; i++) {
               array.push(i)
             }
-            console.log(array, "doneee")
+           
             settotal(array)
           } else {
 
@@ -47,7 +46,6 @@ const AdminDashboardPage = () => {
   }, [page])
   return (
     <>
-      {/* <div className="w-full  flex justify-center items-center text-7xl h-screen text-gray-700 "> */}
       <div className="main-black px-5 py-5">
         <div className="main-black px-5">
           <div className="main-black px-5">
@@ -91,29 +89,17 @@ const AdminDashboardPage = () => {
 
 
             </div>
-            {/* <div className="v-div "> */}
             <div className="d-flex evenly py-auto">
               {total.map((item, key) => (
                 <div className="px-5">
-
-
                   <button onClick={() => { setPage(item) }} className="pagination-btn" >{item}</button>
-
-
-
                 </div>
               ))}
             </div>
-            {/* </div> */}
           </div>
         </div>
       </div>
 
-
-      {/* </div> */}
-      {/* <div className="w-full flex justify-center items-center text-7xl h-screen text-gray-700 ">
-        Dashboard
-      </div> */}
     </>
   );
 };
